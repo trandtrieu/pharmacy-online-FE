@@ -1,7 +1,23 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import ProductServices from '../services/ProductServices'
 
 class ShopComponent extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      products: []
+    }
+
+  }
+
+  componentDidMount() {
+    ProductServices.getProducts().then((res) => {
+      this.setState({ products: res.data });
+    });
+  }
+
   render() {
     return (
       <>
@@ -71,145 +87,26 @@ class ShopComponent extends Component {
               </div>
 
               <div className="row">
-                <div className="col-sm-6 col-lg-4 text-center item mb-4">
-                  <span className="tag">Sale</span>
-                  <a href="shop-single.html">
-                    {" "}
-                    <img src="assets/images/product_01.png" alt="" />
-                  </a>
-                  <h3 className="text-dark">
-                    <a href="shop-single.html">Bioderma</a>
-                  </h3>
-                  <p className="price">
-                    <del>95.00</del> &mdash; $55.00
-                  </p>
-                </div>
-                <div className="col-sm-6 col-lg-4 text-center item mb-4">
-                  <a href="shop-single.html">
-                    {" "}
-                    <img src="assets/images/product_02.png" alt="" />
-                  </a>
-                  <h3 className="text-dark">
-                    <a href="shop-single.html">Chanca Piedra</a>
-                  </h3>
-                  <p className="price">$70.00</p>
-                </div>
-                <div className="col-sm-6 col-lg-4 text-center item mb-4">
-                  <a href="shop-single.html">
-                    {" "}
-                    <img src="assets/images/product_03.png" alt="" />
-                  </a>
-                  <h3 className="text-dark">
-                    <a href="shop-single.html">Umcka Cold Care</a>
-                  </h3>
-                  <p className="price">$120.00</p>
-                </div>
+                {
+                  this.state.products.map(
+                    product =>
+                      <div className="col-sm-6 col-lg-4 text-center item mb-4" key={product.product_id}>
+                        <span className="tag">{product.p_brand}</span>
+                        <a href="shop-single.html">
+                          {" "}
+                          <img src="assets/images/product_01.png" alt="" />
+                        </a>
+                        <h3 className="text-dark">
+                          <a href="shop-single.html">{product.p_name}</a>
+                        </h3>
+                        <p className="price">
+                          <del> $55.00</del> &mdash; ${product.p_price}
+                        </p>
+                      </div>
+                  )
 
-                <div className="col-sm-6 col-lg-4 text-center item mb-4">
-                  <a href="shop-single.html">
-                    {" "}
-                    <img src="assets/images/product_04.png" alt="" />
-                  </a>
-                  <h3 className="text-dark">
-                    <a href="shop-single.html">Cetyl Pure</a>
-                  </h3>
-                  <p className="price">
-                    <del>45.00</del> &mdash; $20.00
-                  </p>
-                </div>
-                <div className="col-sm-6 col-lg-4 text-center item mb-4">
-                  <a href="shop-single.html">
-                    {" "}
-                    <img src="assets/images/product_05.png" alt="" />
-                  </a>
-                  <h3 className="text-dark">
-                    <a href="shop-single.html">CLA Core</a>
-                  </h3>
-                  <p className="price">$38.00</p>
-                </div>
-                <div className="col-sm-6 col-lg-4 text-center item mb-4">
-                  <span className="tag">Sale</span>
-                  <a href="shop-single.html">
-                    {" "}
-                    <img src="assets/images/product_06.png" alt="" />
-                  </a>
-                  <h3 className="text-dark">
-                    <a href="shop-single.html">Poo Pourri</a>
-                  </h3>
-                  <p className="price">
-                    <del>$89</del> &mdash; $38.00
-                  </p>
-                </div>
+                }
 
-                <div className="col-sm-6 col-lg-4 text-center item mb-4">
-                  <span className="tag">Sale</span>
-                  <a href="shop-single.html">
-                    {" "}
-                    <img src="assets/images/product_01.png" alt="" />
-                  </a>
-                  <h3 className="text-dark">
-                    <a href="shop-single.html">Bioderma</a>
-                  </h3>
-                  <p className="price">
-                    <del>95.00</del> &mdash; $55.00
-                  </p>
-                </div>
-                <div className="col-sm-6 col-lg-4 text-center item mb-4">
-                  <a href="shop-single.html">
-                    {" "}
-                    <img src="assets/images/product_02.png" alt="" />
-                  </a>
-                  <h3 className="text-dark">
-                    <a href="shop-single.html">Chanca Piedra</a>
-                  </h3>
-                  <p className="price">$70.00</p>
-                </div>
-                <div className="col-sm-6 col-lg-4 text-center item mb-4">
-                  <a href="shop-single.html">
-                    {" "}
-                    <img ˀsrc="assets/images/product_03.png" alt="" />
-                  </a>
-                  <h3 className="text-dark">
-                    <a href="shop-single.html">Umcka Cold Care</a>
-                  </h3>
-                  <p className="price">$120.00</p>
-                </div>
-
-                <div className="col-sm-6 col-lg-4 text-center item mb-4">
-                  <a href="shop-single.html">
-                    {" "}
-                    <img src="assets/images/product_04.png" alt="" />
-                  </a>
-                  <h3 className="text-dark">
-                    <a href="shop-single.html">Cetyl Pure</a>
-                  </h3>
-                  <p className="price">
-                    <del>45.00</del> &mdash; $20.00
-                  </p>
-                </div>
-                <div className="col-sm-6 col-lg-4 text-center item mb-4">
-                  <a href="shop-single.html">
-                    {" "}
-                    <img src="assets/images/product_05.png" alt="" />
-                  </a>
-                  <h3 className="text-dark">
-                    <a href="shop-single.html">CLA Core</a>
-                  </h3>
-                  <p className="price">$38.00</p>
-                </div>
-                <div className="col-sm-6 col-lg-4 text-center item mb-4">
-                  <span className="tag">Sale</span>
-                  <a href="shop-single.html">
-                    {" "}
-                    <img src="assets/images/product_06.png" alt="" />
-                  </a>
-                  <h3 className="text-dark">
-                    <a href="shop-single.html">Poo Pourri</a>
-                  </h3>
-                  <p className="price">
-                    <del>$89</del> &mdash; $38.00
-                  </p>
-                </div>
               </div>
               <div className="row mt-5">
                 <div className="col-md-12 text-center">
