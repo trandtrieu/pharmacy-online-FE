@@ -55,7 +55,7 @@ class ShopComponent extends Component {
                     disabled=""
                   />
                 </div>
-                <div className="col-lg-6">
+                <div className="col-lg-6 text-end">
                   <h3 className="mb-3 h6 text-uppercase text-black d-block">
                     Filter by Reference
                   </h3>
