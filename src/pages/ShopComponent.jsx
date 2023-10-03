@@ -16,9 +16,9 @@ class ShopComponent extends Component {
     });
   }
 
-  // viewProduct(product_id) {
-  //   this.props.history.push(`/single-product/${product_id}`);
-  // }
+  viewProduct(product_id) {
+    this.props.history.push(`/single-product/${product_id}`);
+  }
 
   render() {
     return (
@@ -105,12 +105,11 @@ class ShopComponent extends Component {
                       )}
                     </a>
                     <h3 className="text-dark">
-                      <Link
-                        // onClick={() => this.viewProduct(product.productId)}
-                        to={`/single-product/${product.productId}`}
+                      <button
+                        onClick={() => this.viewProduct(product.productId)}
                       >
                         {product.productId}
-                      </Link>
+                      </button>
                     </h3>
                     <p className="price">
                       <del> $55.00</del> &mdash; ${product.store}

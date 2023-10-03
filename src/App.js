@@ -2,7 +2,7 @@ import "./App.css";
 import FooterComponent from "./pages/FooterComponent";
 import HeaderComponent from "./pages/HeaderComponent";
 import BodyHomeComponent from "./pages/BodyHomeComponent";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AboutComponent from "./pages/AboutComponent";
 import SingleProductComponent from "./pages/SingleProductComponent";
 import ContactComponent from "./pages/ContactComponent";
@@ -12,19 +12,19 @@ function App() {
   return (
     <Router>
       <HeaderComponent />
-      <Routes>
-        <Route path="/" exact element={<BodyHomeComponent />} />
-        <Route path="/home" element={<BodyHomeComponent />} />
-        <Route path="/about" element={<AboutComponent />} />
+      <Switch>
+        <Route path="/" exact component={BodyHomeComponent} />
+        <Route path="/home" component={BodyHomeComponent} />
+        <Route path="/about" component={AboutComponent} />
         <Route
           path="/single-product/:productId"
-          element={<SingleProductComponent />}
+          component={SingleProductComponent}
         />
 
-        <Route path="/contact" element={<ContactComponent />} />
-        <Route path="/shop" element={<ShopComponent />} />
-        <Route path="/cart" element={<CartComponent />} />
-      </Routes>
+        <Route path="/contact" component={ContactComponent} />
+        <Route path="/shop" component={ShopComponent} />
+        <Route path="/cart" component={CartComponent} />
+      </Switch>
       <FooterComponent />
     </Router>
   );
