@@ -11,14 +11,14 @@ class ShopComponent extends Component {
   }
 
   componentDidMount() {
-    ProductServices.getProducts3().then((res) => {
+    ProductServices.getProducts().then((res) => {
       this.setState({ products: res.data });
     });
   }
 
-  viewProduct(product_id) {
-    this.props.history.push(`/single-product/${product_id}`);
-  }
+  // viewProduct(product_id) {
+  //   this.props.history.push(`/single-product/${product_id}`);
+  // }
 
   render() {
     return (
@@ -92,7 +92,7 @@ class ShopComponent extends Component {
                 {this.state.products.map((product) => (
                   <div
                     className="col-sm-6 col-lg-4 text-center item mb-4"
-                    key={product.product_id}
+                    key={product.productId}
                   >
                     <span className="tag">{product.brand}</span>
                     <a href="shop-single.html">
@@ -106,10 +106,10 @@ class ShopComponent extends Component {
                     </a>
                     <h3 className="text-dark">
                       <Link
-                        onClick={() => this.viewProduct(product.product_id)}
-                        to={`/single-product/${product.product_id}`}
+                        // onClick={() => this.viewProduct(product.productId)}
+                        to={`/single-product/${product.productId}`}
                       >
-                        {product.name}
+                        {product.productId}
                       </Link>
                     </h3>
                     <p className="price">
@@ -196,14 +196,3 @@ class ShopComponent extends Component {
 }
 
 export default ShopComponent;
-
-{
-  /* {product.imageUrls.map((imageUrl, index) => (
-                        <img
-                          style={{ width: "50px" }}
-                          key={index}
-                          src={`assets/images/${imageUrl}`}
-                          alt={`Imagee ${index}`}
-                        />
-                      ))} */
-}

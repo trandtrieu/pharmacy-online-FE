@@ -13,16 +13,17 @@ function App() {
     <Router>
       <HeaderComponent />
       <Routes>
-        <Route path="/" exact Component={BodyHomeComponent} />
-        <Route path="/home" Component={BodyHomeComponent} />
-        <Route path="/about" Component={AboutComponent} />
+        <Route path="/" exact element={<BodyHomeComponent />} />
+        <Route path="/home" element={<BodyHomeComponent />} />
+        <Route path="/about" element={<AboutComponent />} />
         <Route
           path="/single-product/:productId"
-          Component={SingleProductComponent}
+          element={<SingleProductComponent />}
         />
-        <Route path="/contact" Component={ContactComponent} />
-        <Route path="/shop" Component={ShopComponent} />
-        <Route path="/cart" Component={CartComponent} />
+
+        <Route path="/contact" element={<ContactComponent />} />
+        <Route path="/shop" element={<ShopComponent />} />
+        <Route path="/cart" element={<CartComponent />} />
       </Routes>
       <FooterComponent />
     </Router>
