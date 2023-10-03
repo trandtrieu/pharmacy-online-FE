@@ -1,6 +1,22 @@
 import React, { Component } from "react";
+import ProductServices from "../services/ProductServices";
 
 class SingleComponent extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      product_id: this.props.match.params.product_id,
+      products: {},
+    };
+  }
+
+  componentDidMount() {
+    ProductServices.getProductById(this.state.product_id).then((res) => {
+      this.setState({ products: res.data });
+    });
+  }
+
   render() {
     return (
       <>

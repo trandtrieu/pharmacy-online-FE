@@ -5,20 +5,19 @@ import ProductServices from "../services/ProductServices";
 class ShopComponent extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       products: [],
     };
   }
 
   componentDidMount() {
-    // ProductServices.getProducts().then((res) => {
-    //   this.setState({ products: res.data });
-    // });
-
     ProductServices.getProducts3().then((res) => {
       this.setState({ products: res.data });
     });
+  }
+
+  viewProduct(product_id) {
+    this.props.history.push(`/single-product/${product_id}`);
   }
 
   render() {
@@ -106,7 +105,12 @@ class ShopComponent extends Component {
                       )}
                     </a>
                     <h3 className="text-dark">
-                      <a href="shop-single.html">{product.name}</a>
+                      <Link
+                        onClick={() => this.viewProduct(product.product_id)}
+                        to={`/single-product/${product.product_id}`}
+                      >
+                        {product.name}
+                      </Link>
                     </h3>
                     <p className="price">
                       <del> $55.00</del> &mdash; ${product.store}
