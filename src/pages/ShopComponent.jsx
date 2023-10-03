@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import ProductServices from "../services/ProductServices";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { Tooltip as ReactTooltip } from "react-tooltip";
 
 class ShopComponent extends Component {
   constructor(props) {
@@ -87,33 +90,55 @@ class ShopComponent extends Component {
                   </div>
                 </div>
               </div>
+              <ReactTooltip id="my-tooltip" type="error" />
 
               <div className="row">
                 {this.state.products.map((product) => (
                   <div
-                    className="col-sm-6 col-lg-4 text-center item mb-4"
+                    className="col-sm-4 col-lg-3 text-center item mb-4"
                     key={product.productId}
                   >
                     <span className="tag">{product.brand}</span>
                     <a href="shop-single.html">
                       {product.imageUrls.length > 0 && (
                         <img
-                          style={{ width: "100%", height: "100%" }}
                           src={`assets/images/${product.imageUrls[0]}`}
                           alt={`Imagee 0`}
                         />
                       )}
                     </a>
-                    <h3 className="text-dark">
+                    <h3
+                      className="text-dark "
+                      style={{ backgroundColor: "transparent" }}
+                    >
                       <button
+                        style={{
+                          backgroundColor: "transparent",
+                          border: "none",
+                        }}
                         onClick={() => this.viewProduct(product.productId)}
                       >
-                        {product.productId}
+                        {product.name}
                       </button>
                     </h3>
-                    <p className="price">
-                      <del> $55.00</del> &mdash; ${product.store}
-                    </p>
+                    <h4 className="price">${product.price}</h4>
+                    <button
+                      type="button"
+                      className="btn btn-secondary btn-md px-4"
+                      style={{ backgroundColor: "#51eaea", border: "none" }}
+                      data-tooltip-id="my-tooltip"
+                      data-tooltip-content="Add to wishlist!"
+                    >
+                      <FontAwesomeIcon icon={faHeart} />
+                    </button>
+                    &nbsp;
+                    <button
+                      type="button"
+                      className="btn btn-secondary btn-md px-4"
+                      style={{ backgroundColor: "#51eaea", border: "none" }}
+                    >
+                      Add to cart
+                    </button>
                   </div>
                 ))}
               </div>

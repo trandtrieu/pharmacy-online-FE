@@ -8,6 +8,8 @@ import SingleProductComponent from "./pages/SingleProductComponent";
 import ContactComponent from "./pages/ContactComponent";
 import ShopComponent from "./pages/ShopComponent";
 import CartComponent from "./pages/CartComponent";
+import "react-tooltip/dist/react-tooltip.css";
+
 function App() {
   return (
     <Router>
