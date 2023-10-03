@@ -90,7 +90,7 @@ class ShopComponent extends Component {
                 {
                   this.state.products.map(
                     product =>
-                      <div className="col-sm-6 col-lg-4 text-center item mb-4" key={product.product_id}>
+                      <div className="col-sm-6 col-lg-3 text-center item mb-4" key={product.product_id}>
                         <span className="tag">{product.p_brand}</span>
                         <a href="shop-single.html">
                           {" "}
