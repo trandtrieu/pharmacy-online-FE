@@ -4,7 +4,7 @@ class ContactComponent extends Component {
   render() {
     return (
       <>
-        <div class="site-wrap style-css">
+        <div class="site-wrap">
           <div class="bg-light py-3">
             <div class="container">
               <div class="row">

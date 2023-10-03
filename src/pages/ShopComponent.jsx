@@ -1,19 +1,22 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import ProductServices from '../services/ProductServices'
+import ProductServices from "../services/ProductServices";
 
 class ShopComponent extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
-      products: []
-    }
-
+      products: [],
+    };
   }
 
   componentDidMount() {
-    ProductServices.getProducts().then((res) => {
+    // ProductServices.getProducts().then((res) => {
+    //   this.setState({ products: res.data });
+    // });
+
+    ProductServices.getProducts3().then((res) => {
       this.setState({ products: res.data });
     });
   }
@@ -87,26 +90,29 @@ class ShopComponent extends Component {
               </div>
 
               <div className="row">
-                {
-                  this.state.products.map(
-                    product =>
-                      <div className="col-sm-6 col-lg-4 text-center item mb-4" key={product.product_id}>
-                        <span className="tag">{product.p_brand}</span>
-                        <a href="shop-single.html">
-                          {" "}
-                          <img src="assets/images/product_01.png" alt="" />
-                        </a>
-                        <h3 className="text-dark">
-                          <a href="shop-single.html">{product.p_name}</a>
-                        </h3>
-                        <p className="price">
-                          <del> $55.00</del> &mdash; ${product.p_price}
-                        </p>
-                      </div>
-                  )
-
-                }
-
+                {this.state.products.map((product) => (
+                  <div
+                    className="col-sm-6 col-lg-4 text-center item mb-4"
+                    key={product.product_id}
+                  >
+                    <span className="tag">{product.brand}</span>
+                    <a href="shop-single.html">
+                      {product.imageUrls.length > 0 && (
+                        <img
+                          style={{ width: "100%", height: "100%" }}
+                          src={`assets/images/${product.imageUrls[0]}`}
+                          alt={`Imagee 0`}
+                        />
+                      )}
+                    </a>
+                    <h3 className="text-dark">
+                      <a href="shop-single.html">{product.name}</a>
+                    </h3>
+                    <p className="price">
+                      <del> $55.00</del> &mdash; ${product.store}
+                    </p>
+                  </div>
+                ))}
               </div>
               <div className="row mt-5">
                 <div className="col-md-12 text-center">
@@ -186,3 +192,14 @@ class ShopComponent extends Component {
 }
 
 export default ShopComponent;
+
+{
+  /* {product.imageUrls.map((imageUrl, index) => (
+                        <img
+                          style={{ width: "50px" }}
+                          key={index}
+                          src={`assets/images/${imageUrl}`}
+                          alt={`Imagee ${index}`}
+                        />
+                      ))} */
+}

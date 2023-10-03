@@ -4,7 +4,7 @@ class FooterComponent extends Component {
   render() {
     return (
       <>
-        <div class="site-wrap style-css">
+        <div class="site-wrap ">
           <footer className="site-footer">
             <div className="container">
               <div className="row">

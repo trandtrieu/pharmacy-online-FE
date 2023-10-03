@@ -5,7 +5,7 @@ class BannerComponent extends Component {
   render() {
     return (
       <>
-        <div class="site-wrap style-css">
+        <div class="site-wrap">
           <div
             className="site-blocks-cover"
             style={{ backgroundImage: 'url("assets/images/hero_1.jpg")' }}
