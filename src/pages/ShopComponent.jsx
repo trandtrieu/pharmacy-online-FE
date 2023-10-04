@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import ProductServices from "../services/ProductServices";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 
 class ShopComponent extends Component {
@@ -31,7 +31,7 @@ class ShopComponent extends Component {
             <div className="container">
               <div className="row">
                 <div className="col-md-12 mb-0">
-                  <Link to="/home">Home</Link>{" "}
+                  <Link to="/home">Home</Link>
                   <span className="mx-2 mb-0">/</span>
                   <strong className="text-black">Store</strong>
                 </div>
@@ -90,12 +90,14 @@ class ShopComponent extends Component {
                   </div>
                 </div>
               </div>
-              <ReactTooltip id="my-tooltip" type="error" />
+              <hr />
+              <ReactTooltip id="my-tooltip" type="error" place="left" />
+              <ReactTooltip id="my-tooltip-2" type="error" place="right" />
 
               <div className="row">
                 {this.state.products.map((product) => (
                   <div
-                    className="col-sm-4 col-lg-3 text-center item mb-4"
+                    className="col-sm-3 col-lg-3 text-center item mb-4"
                     key={product.productId}
                   >
                     <span className="tag">{product.brand}</span>
@@ -122,9 +124,10 @@ class ShopComponent extends Component {
                       </button>
                     </h3>
                     <h4 className="price">${product.price}</h4>
+                    <h4 className="price">Category: {product.category_name}</h4>
                     <button
                       type="button"
-                      className="btn btn-secondary btn-md px-4"
+                      className="btn btn-secondary btn-md px-4 "
                       style={{ backgroundColor: "#51eaea", border: "none" }}
                       data-tooltip-id="my-tooltip"
                       data-tooltip-content="Add to wishlist!"
@@ -134,10 +137,13 @@ class ShopComponent extends Component {
                     &nbsp;
                     <button
                       type="button"
-                      className="btn btn-secondary btn-md px-4"
+                      className="btn btn-secondary btn-md px-4 btn-custom"
                       style={{ backgroundColor: "#51eaea", border: "none" }}
+                      data-tooltip-id="my-tooltip-2"
+                      data-tooltip-content="Add to cart!"
                     >
-                      Add to cart
+                      <FontAwesomeIcon icon={faCartShopping} />
+                      {/* &nbsp; Add to cart */}
                     </button>
                   </div>
                 ))}

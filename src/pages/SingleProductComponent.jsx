@@ -33,7 +33,11 @@ class SingleComponent extends Component {
                   <span className="mx-2 mb-0">/</span>
                   <Link to="/shop">Store</Link>
                   <span className="mx-2 mb-0">/</span>
+                  <span className="text-black">
+                    {this.state.product.category_name} /
+                  </span>
                   <strong className="text-black">
+                    &nbsp;
                     {this.state.product.name}
                   </strong>
                 </div>
@@ -48,6 +52,7 @@ class SingleComponent extends Component {
                   id="demo"
                   className="carousel slide col-md-5 mr-auto"
                   data-bs-ride="carousel"
+                  data-interval="1000"
                 >
                   <div className="carousel-indicators">
                     {this.state.imageUrls.map((imageUrls, index) => (
@@ -147,7 +152,7 @@ class SingleComponent extends Component {
                   <p>
                     <a
                       href="cart.html"
-                      className="buy-now btn btn-sm height-auto px-4 py-3 btn-primary"
+                      className="buy-now btn btn-sm height-auto px-4 py-2 btn-primary"
                     >
                       Add To Cart
                     </a>
@@ -169,7 +174,7 @@ class SingleComponent extends Component {
                           aria-controls="pills-home"
                           aria-selected="true"
                         >
-                          Ordering Information
+                          Describe
                         </a>
                       </li>
                       <li className="nav-item">
@@ -182,7 +187,7 @@ class SingleComponent extends Component {
                           aria-controls="pills-profile"
                           aria-selected="false"
                         >
-                          Specifications
+                          Product Information
                         </a>
                       </li>
                     </ul>
@@ -194,35 +199,22 @@ class SingleComponent extends Component {
                         aria-labelledby="pills-home-tab"
                       >
                         <table className="table custom-table">
-                          <thead>
+                          {/* <thead>
                             <th>Material</th>
                             <th>Description</th>
-                            <th>Packaging</th>
-                          </thead>
+                          </thead> */}
                           <tbody>
                             <tr>
-                              <th scope="row">OTC022401</th>
-                              <td>
-                                Pain Management: Acetaminophen PM Extra-Strength
-                                Caplets, 500 mg, 100/Bottle
-                              </td>
-                              <td>1 BT</td>
+                              <th scope="row">Object</th>
+                              <td>{this.state.product.object}</td>
                             </tr>
                             <tr>
-                              <th scope="row">OTC022401</th>
-                              <td>
-                                Pain Management: Acetaminophen PM Extra-Strength
-                                Caplets, 500 mg, 100/Bottle
-                              </td>
-                              <td>144/CS</td>
+                              <th scope="row">Guide</th>
+                              <td>{this.state.product.guide}</td>
                             </tr>
                             <tr>
-                              <th scope="row">OTC022401</th>
-                              <td>
-                                Pain Management: Acetaminophen PM Extra-Strength
-                                Caplets, 500 mg, 100/Bottle
-                              </td>
-                              <td>1 EA</td>
+                              <th scope="row">Store</th>
+                              <td>{this.state.product.store}</td>
                             </tr>
                           </tbody>
                         </table>
@@ -236,20 +228,16 @@ class SingleComponent extends Component {
                         <table className="table custom-table">
                           <tbody>
                             <tr>
-                              <td>HPIS CODE</td>
-                              <td className="bg-light">999_200_40_0</td>
+                              <th scope="row">Store</th>
+                              <td>{this.state.product.store}</td>
                             </tr>
                             <tr>
-                              <td>HEALTHCARE PROVIDERS ONLY</td>
-                              <td className="bg-light">No</td>
+                              <th scope="row">Vitue</th>
+                              <td>{this.state.product.virtue}</td>
                             </tr>
                             <tr>
-                              <td>LATEX FREE</td>
-                              <td className="bg-light">Yes, No</td>
-                            </tr>
-                            <tr>
-                              <td>MEDICATION ROUTE</td>
-                              <td className="bg-light">Topical</td>
+                              <th scope="row">Made in</th>
+                              <td>{this.state.product.madeIn}</td>
                             </tr>
                           </tbody>
                         </table>

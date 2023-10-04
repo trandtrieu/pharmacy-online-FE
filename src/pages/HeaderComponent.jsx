@@ -37,7 +37,7 @@ class HeaderComponent extends Component {
                     role="navigation"
                   >
                     <ul class="site-menu js-clone-nav d-none d-lg-block">
-                      <li class="active">
+                      <li class="">
                         <Link to="/home">Home</Link>
                       </li>
                       <li>

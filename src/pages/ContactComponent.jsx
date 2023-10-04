@@ -66,7 +66,7 @@ class ContactComponent extends Component {
                       <div class="form-group row">
                         <div class="col-md-12">
                           <label for="c_subject" class="text-black">
-                            Subject{" "}
+                            Subject
                           </label>
                           <input
                             type="text"
@@ -80,7 +80,7 @@ class ContactComponent extends Component {
                       <div class="form-group row">
                         <div class="col-md-12">
                           <label for="c_message" class="text-black">
-                            Message{" "}
+                            Message
                           </label>
                           <textarea
                             name="c_message"
@@ -198,11 +198,9 @@ class ContactComponent extends Component {
                 <div class="col-md-12">
                   <p>
                     Copyright &copy;
-                    <script>
-                      document.write(new Date().getFullYear());
-                    </script>{" "}
-                    All rights reserved | This template is made with{" "}
-                    <i class="icon-heart" aria-hidden="true"></i> by{" "}
+                    <script>document.write(new Date().getFullYear());</script>
+                    All rights reserved | This template is made with
+                    <i class="icon-heart" aria-hidden="true"></i> by
                     <a
                       href="https://colorlib.com"
                       target=""
