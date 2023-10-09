@@ -4,6 +4,7 @@ import ProductServices from "../services/ProductServices";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { Tooltip as ReactTooltip } from "react-tooltip";
+import { toast } from "react-toastify";
 
 class ShopComponent extends Component {
   constructor(props) {
@@ -18,9 +19,19 @@ class ShopComponent extends Component {
       this.setState({ products: res.data });
     });
   }
-
-  viewProduct(product_id) {
-    this.props.history.push(`/single-product/${product_id}`);
+  addWishListProduct(product_id) {
+    const accountId = 3; // Replace with the actual account ID
+    ProductServices.addToWishlist(accountId, product_id)
+      .then((response) => {
+        console.log("Product added to wishlist:", response.data);
+        toast.success("Product added to wishlist successfully!");
+      })
+      .catch((error) => {
+        console.error("Error adding product to wishlist:", error);
+      });
+  }
+  viewProduct(productId) {
+    this.props.history.push(`/single-product/${productId}`);
   }
 
   render() {
@@ -41,55 +52,6 @@ class ShopComponent extends Component {
 
           <div className="site-section">
             <div className="container">
-              <div className="row">
-                <div className="col-lg-6">
-                  <h3 className="mb-3 h6 text-uppercase text-black d-block">
-                    Filter by Price
-                  </h3>
-                  <div id="slider-range" className="border-primary"></div>
-                  <input
-                    type="text"
-                    name="text"
-                    id="amount"
-                    className="form-control border-0 pl-0 bg-white"
-                    disabled=""
-                  />
-                </div>
-                <div className="col-lg-6 text-end">
-                  <h3 className="mb-3 h6 text-uppercase text-black d-block">
-                    Filter by Reference
-                  </h3>
-                  <button
-                    type="button"
-                    className="btn btn-secondary btn-md dropdown-toggle px-4"
-                    id="dropdownMenuReference"
-                    data-toggle="dropdown"
-                  >
-                    Reference
-                  </button>
-                  <div
-                    className="dropdown-menu"
-                    aria-labelledby="dropdownMenuReference"
-                  >
-                    <a className="dropdown-item" href="/">
-                      Relevance
-                    </a>
-                    <a className="dropdown-item" href="/">
-                      Name, A to Z
-                    </a>
-                    <a className="dropdown-item" href="/">
-                      Name, Z to A
-                    </a>
-                    <div className="dropdown-divider"></div>
-                    <a className="dropdown-item" href="/">
-                      Price, low to high
-                    </a>
-                    <a className="dropdown-item" href="/">
-                      Price, high to low
-                    </a>
-                  </div>
-                </div>
-              </div>
               <hr />
               <ReactTooltip id="my-tooltip" type="error" place="left" />
               <ReactTooltip id="my-tooltip-2" type="error" place="right" />
@@ -131,6 +93,7 @@ class ShopComponent extends Component {
                       style={{ backgroundColor: "#51eaea", border: "none" }}
                       data-tooltip-id="my-tooltip"
                       data-tooltip-content="Add to wishlist!"
+                      onClick={() => this.addWishListProduct(product.productId)}
                     >
                       <FontAwesomeIcon icon={faHeart} />
                     </button>
@@ -143,7 +106,6 @@ class ShopComponent extends Component {
                       data-tooltip-content="Add to cart!"
                     >
                       <FontAwesomeIcon icon={faCartShopping} />
-                      {/* &nbsp; Add to cart */}
                     </button>
                   </div>
                 ))}
@@ -175,46 +137,6 @@ class ShopComponent extends Component {
                       </li>
                     </ul>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div
-            className="site-section bg-secondary bg-image"
-            style={{ backgroundImage: 'url("assets/images/bg_2.jpg")' }}
-          >
-            <div className="container">
-              <div className="row align-items-stretch">
-                <div className="col-lg-6 mb-5 mb-lg-0">
-                  <a
-                    href="/"
-                    className="banner-1 h-100 d-flex"
-                    style={{ backgroundImage: 'url("assets/images/bg_1.jpg")' }}
-                  >
-                    <div className="banner-1-inner align-self-center">
-                      <h2>Pharma Products</h2>
-                      <p>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing
-                        elit. Molestiae ex ad minus rem odio voluptatem.
-                      </p>
-                    </div>
-                  </a>
-                </div>
-                <div className="col-lg-6 mb-5 mb-lg-0">
-                  <a
-                    href="/"
-                    className="banner-1 h-100 d-flex"
-                    style={{ backgroundImage: 'url("assets/images/bg_2.jpg")' }}
-                  >
-                    <div className="banner-1-inner ml-auto  align-self-center">
-                      <h2>Rated by Experts</h2>
-                      <p>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing
-                        elit. Molestiae ex ad minus rem odio voluptatem.
-                      </p>
-                    </div>
-                  </a>
                 </div>
               </div>
             </div>

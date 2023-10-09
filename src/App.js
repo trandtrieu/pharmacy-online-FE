@@ -8,12 +8,18 @@ import SingleProductComponent from "./pages/SingleProductComponent";
 import ContactComponent from "./pages/ContactComponent";
 import ShopComponent from "./pages/ShopComponent";
 import CartComponent from "./pages/CartComponent";
+import WishListComponent from "./pages/WishListComponent";
+
 import "react-tooltip/dist/react-tooltip.css";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
     <Router>
       <HeaderComponent />
+      <ToastContainer />
+
       <Switch>
         <Route path="/" exact component={BodyHomeComponent} />
         <Route path="/home" component={BodyHomeComponent} />
@@ -22,10 +28,10 @@ function App() {
           path="/single-product/:productId"
           component={SingleProductComponent}
         />
-
         <Route path="/contact" component={ContactComponent} />
         <Route path="/shop" component={ShopComponent} />
         <Route path="/cart" component={CartComponent} />
+        <Route path="/wish-list" component={WishListComponent} />
       </Switch>
       <FooterComponent />
     </Router>

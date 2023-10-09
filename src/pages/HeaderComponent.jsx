@@ -1,57 +1,58 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 class HeaderComponent extends Component {
   render() {
     return (
       <>
-        <div class="site-wrap style-css">
-          <div class="site-navbar py-2">
-            <div class="search-wrap">
-              <div class="container">
-                <a href="/" class="search-close js-search-close">
-                  <span class="icon-close2"></span>
+        <div className="site-wrap style-css">
+          <div className="site-navbar py-2">
+            <div className="search-wrap">
+              <div className="container">
+                <a href="/" className="search-close js-search-close">
+                  <span className="icon-close2"></span>
                 </a>
                 <form action="#" method="post">
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     placeholder="Search keyword and hit enter..."
                   />
                 </form>
               </div>
             </div>
 
-            <div class="container">
-              <div class="d-flex align-items-center justify-content-between">
-                <div class="logo">
-                  <div class="site-logo px">
-                    <Link to="home" class="js-logo-clone">
+            <div className="container">
+              <div className="d-flex align-items-center justify-content-between">
+                <div className="logo">
+                  <div className="site-logo px">
+                    <Link to="home" className="js-logo-clone">
                       Pharma
                     </Link>
                   </div>
                 </div>
-                <div class="main-nav d-none d-lg-block">
+                <div className="main-nav d-none d-lg-block">
                   <nav
-                    class="site-navigation text-right text-md-center"
+                    className="site-navigation text-right text-md-center"
                     role="navigation"
                   >
-                    <ul class="site-menu js-clone-nav d-none d-lg-block">
-                      <li class="">
+                    <ul className="site-menu js-clone-nav d-none d-lg-block">
+                      <li className="">
                         <Link to="/home">Home</Link>
                       </li>
                       <li>
                         <Link to="/shop">Store</Link>
                       </li>
-                      <li class="has-children">
+                      <li className="has-children">
                         <a href="/">Dropdown</a>
-                        <ul class="dropdown">
+                        <ul className="dropdown">
                           <li>
                             <a href="/">Supplements</a>
                           </li>
-                          <li class="has-children">
+                          <li className="has-children">
                             <a href="/">Vitamins</a>
-                            <ul class="dropdown">
+                            <ul className="dropdown">
                               <li>
                                 <a href="/">Supplements</a>
                               </li>
@@ -83,22 +84,29 @@ class HeaderComponent extends Component {
                     </ul>
                   </nav>
                 </div>
-                <div class="icons">
+                <div className="icons">
                   <Link
                     to="/cart"
-                    class="icons-btn d-inline-block js-search-open"
+                    className="icons-btn d-inline-block js-search-open"
                   >
-                    <span class="icon-search"></span>
+                    <span className="icon-search"></span>
                   </Link>
-                  <Link to="/cart" class="icons-btn d-inline-block bag">
-                    <span class="icon-shopping-bag"></span>
-                    <span class="number">2</span>
+                  <Link to="/cart" className="icons-btn d-inline-block bag">
+                    <span className="icon-shopping-bag"></span>
+                    <span className="number">2</span>
+                  </Link>
+                  &nbsp;
+                  <Link to="/cart" className="icons-btn d-inline-block bag">
+                    <span>
+                      <FontAwesomeIcon icon={faHeart} />
+                    </span>
+                    <span className="number">3</span>
                   </Link>
                   <a
                     href="/"
-                    class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"
+                    className="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"
                   >
-                    <span class="icon-menu"></span>
+                    <span className="icon-menu"></span>
                   </a>
                 </div>
               </div>
