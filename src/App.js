@@ -8,6 +8,8 @@ import SingleProductComponent from "./pages/SingleProductComponent";
 import ContactComponent from "./pages/ContactComponent";
 import ShopComponent from "./pages/ShopComponent";
 import CartComponent from "./pages/CartComponent";
+import ViewProductComponent from "./pages/ListProductComponent";
+import CreateProductComponent from "./pages/CreateProductComponent";
 function App() {
   return (
     <Router>
@@ -20,8 +22,11 @@ function App() {
           path="/single-product/:productId"
           component={SingleProductComponent}
         />
+        <Route path="/add-product/:id" component={CreateProductComponent}></Route>
 
         <Route path="/contact" component={ContactComponent} />
+        <Route path="/viewproduct" component={ViewProductComponent} />
+
         <Route path="/shop" component={ShopComponent} />
         <Route path="/cart" component={CartComponent} />
       </Switch>

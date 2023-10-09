@@ -80,6 +80,39 @@ class HeaderComponent extends Component {
                       <li>
                         <Link to="/contact">Contact</Link>
                       </li>
+
+                      <li class="has-children">
+                        <a href="/">Manage</a>
+                        <ul class="dropdown">
+                          <li>
+                            {/* <a href="/">Manage Product</a> */}
+                            <Link to="/viewproduct">Manage Product</Link>
+                          </li>
+                          {/* <li class="has-children">
+                            <a href="/">Vitamins</a>
+                            <ul class="dropdown">
+                              <li>
+                                <a href="/">Supplements</a>
+                              </li>
+                              <li>
+                                <a href="/">Vitamins</a>
+                              </li>
+                              <li>
+                                <a href="/">Diet &amp; Nutrition</a>
+                              </li>
+                              <li>
+                                <a href="/">Tea &amp; Coffee</a>
+                              </li>
+                            </ul>
+                          </li> */}
+                          <li>
+                            <a href="/">Manage User</a>
+                          </li>
+                          <li>
+                            <a href="/">Manage Blog</a>
+                          </li>
+                        </ul>
+                      </li>
                     </ul>
                   </nav>
                 </div>
