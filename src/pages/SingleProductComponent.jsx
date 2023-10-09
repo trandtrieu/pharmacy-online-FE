@@ -1,6 +1,23 @@
 import React, { Component } from "react";
+import ProductServices from "../services/ProductServices";
+import { Link } from "react-router-dom/cjs/react-router-dom";
 
 class SingleComponent extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      productId: this.props.match.params.productId,
+      product: {},
+    };
+  }
+
+  componentDidMount() {
+    ProductServices.getProductById(this.state.productId).then((res) => {
+      this.setState({ product: res.data });
+    });
+  }
+
   render() {
     return (
       <>
@@ -9,9 +26,9 @@ class SingleComponent extends Component {
             <div class="container">
               <div class="row">
                 <div class="col-md-12 mb-0">
-                  <a href="index.html">Home</a> <span class="mx-2 mb-0">/</span>{" "}
-                  <a href="shop.html">Store</a> <span class="mx-2 mb-0">/</span>{" "}
-                  <strong class="text-black">Ibuprofen Tablets, 200mg</strong>
+                  <Link to="/home">Home</Link> <span class="mx-2 mb-0">/</span>
+                  <a href="shop.html">Store</a> <span class="mx-2 mb-0">/</span>
+                  <strong class="text-black">{this.state.product.name}</strong>
                 </div>
               </div>
             </div>

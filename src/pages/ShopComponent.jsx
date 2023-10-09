@@ -1,21 +1,23 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import ProductServices from '../services/ProductServices'
+import ProductServices from "../services/ProductServices";
 
 class ShopComponent extends Component {
   constructor(props) {
-    super(props)
-
+    super(props);
     this.state = {
-      products: []
-    }
-
+      products: [],
+    };
   }
 
   componentDidMount() {
     ProductServices.getProducts().then((res) => {
       this.setState({ products: res.data });
     });
+  }
+
+  viewProduct(product_id) {
+    this.props.history.push(`/single-product/${product_id}`);
   }
 
   render() {
@@ -87,6 +89,7 @@ class ShopComponent extends Component {
               </div>
 
               <div className="row">
+
                 {
                   this.state.products.map(
                     product =>
@@ -106,6 +109,35 @@ class ShopComponent extends Component {
                   )
 
                 }
+
+
+                {this.state.products.map((product) => (
+                  <div
+                    className="col-sm-6 col-lg-4 text-center item mb-4"
+                    key={product.productId}
+                  >
+                    <span className="tag">{product.brand}</span>
+                    <a href="shop-single.html">
+                      {product.imageUrls.length > 0 && (
+                        <img
+                          style={{ width: "100%", height: "100%" }}
+                          src={`assets/images/${product.imageUrls[0]}`}
+                          alt={`Imagee 0`}
+                        />
+                      )}
+                    </a>
+                    <h3 className="text-dark">
+                      <button
+                        onClick={() => this.viewProduct(product.productId)}
+                      >
+                        {product.productId}
+                      </button>
+                    </h3>
+                    <p className="price">
+                      <del> $55.00</del> &mdash; ${product.store}
+                    </p>
+                  </div>
+                ))}
 
               </div>
               <div className="row mt-5">
