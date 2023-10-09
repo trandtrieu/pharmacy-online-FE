@@ -21,6 +21,8 @@ function App() {
       <ToastContainer />
 
       <Switch>
+        {/* <HeaderComponent /> */}
+
         <Route path="/" exact component={BodyHomeComponent} />
         <Route path="/home" component={BodyHomeComponent} />
         <Route path="/about" component={AboutComponent} />
@@ -31,7 +33,7 @@ function App() {
         <Route path="/contact" component={ContactComponent} />
         <Route path="/shop" component={ShopComponent} />
         <Route path="/cart" component={CartComponent} />
-        <Route path="/wish-list" component={WishListComponent} />
+        <Route path="/wishlist" component={WishListComponent} />
       </Switch>
       <FooterComponent />
     </Router>

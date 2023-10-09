@@ -2,7 +2,13 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+
+// const accountId = 3;
+
 class HeaderComponent extends Component {
+  viewWishList() {
+    // this.props.history.push(`/wishlist/${accountId}`);
+  }
   render() {
     return (
       <>
@@ -44,37 +50,7 @@ class HeaderComponent extends Component {
                       <li>
                         <Link to="/shop">Store</Link>
                       </li>
-                      <li className="has-children">
-                        <a href="/">Dropdown</a>
-                        <ul className="dropdown">
-                          <li>
-                            <a href="/">Supplements</a>
-                          </li>
-                          <li className="has-children">
-                            <a href="/">Vitamins</a>
-                            <ul className="dropdown">
-                              <li>
-                                <a href="/">Supplements</a>
-                              </li>
-                              <li>
-                                <a href="/">Vitamins</a>
-                              </li>
-                              <li>
-                                <a href="/">Diet &amp; Nutrition</a>
-                              </li>
-                              <li>
-                                <a href="/">Tea &amp; Coffee</a>
-                              </li>
-                            </ul>
-                          </li>
-                          <li>
-                            <a href="/">Diet &amp; Nutrition</a>
-                          </li>
-                          <li>
-                            <a href="/">Tea &amp; Coffee</a>
-                          </li>
-                        </ul>
-                      </li>
+
                       <li>
                         <Link to="/about">About</Link>
                       </li>
@@ -91,17 +67,17 @@ class HeaderComponent extends Component {
                   >
                     <span className="icon-search"></span>
                   </Link>
+                  <Link to="/wishlist" className="icons-btn d-inline-block bag">
+                    <span onClick={this.viewWishList()}>
+                      <FontAwesomeIcon icon={faHeart} />
+                    </span>
+                    <span className="number">3</span>
+                  </Link>
                   <Link to="/cart" className="icons-btn d-inline-block bag">
                     <span className="icon-shopping-bag"></span>
                     <span className="number">2</span>
                   </Link>
                   &nbsp;
-                  <Link to="/cart" className="icons-btn d-inline-block bag">
-                    <span>
-                      <FontAwesomeIcon icon={faHeart} />
-                    </span>
-                    <span className="number">3</span>
-                  </Link>
                   <a
                     href="/"
                     className="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"
