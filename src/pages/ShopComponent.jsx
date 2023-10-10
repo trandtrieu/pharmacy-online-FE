@@ -20,7 +20,7 @@ class ShopComponent extends Component {
     });
   }
   addWishListProduct(product_id) {
-    const accountId = 3; // Replace with the actual account ID
+    const accountId = 4; // Replace with the actual account ID
     ProductServices.addToWishlist(accountId, product_id)
       .then((response) => {
         console.log("Product added to wishlist:", response.data);
