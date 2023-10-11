@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ProductServices from "../services/ProductServices";
 import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -8,6 +7,7 @@ import {
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import WishListServices from "../services/WishListServices";
 
 const accountId = 4;
 class WishListComponent extends Component {
@@ -19,7 +19,7 @@ class WishListComponent extends Component {
   }
 
   componentDidMount() {
-    ProductServices.wishlist(accountId).then((res) => {
+    WishListServices.wishlist(accountId).then((res) => {
       this.setState({ wishlists: res.data });
     });
   }
@@ -27,7 +27,7 @@ class WishListComponent extends Component {
   deleteWishListProduct(accountId, productId) {
     return function (event) {
       event.preventDefault();
-      ProductServices.deleteWishlistProduct(accountId, productId)
+      WishListServices.deleteWishlistProduct(accountId, productId)
         .then((response) => {
           toast.success("Delete product succesfully");
           console.log(response.data);

@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 import { toast } from "react-toastify";
+import WishListServices from "../services/WishListServices";
 
 class ShopComponent extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class ShopComponent extends Component {
   }
   addWishListProduct(product_id) {
     const accountId = 4; // Replace with the actual account ID
-    ProductServices.addToWishlist(accountId, product_id)
+    WishListServices.addToWishlist(accountId, product_id)
       .then((response) => {
         console.log("Product added to wishlist:", response.data);
         toast.success("Product added to wishlist successfully!");
@@ -30,6 +31,18 @@ class ShopComponent extends Component {
         console.error("Error adding product to wishlist:", error);
       });
   }
+  addProductToCart(product_id) {
+    const accountId = 4; // Replace with the actual account ID
+    ProductServices.addToCart(accountId, product_id, 1)
+      .then((response) => {
+        console.log("Product added to cart:", response.data);
+        toast.error("Product added to cart successfully!");
+      })
+      .catch((error) => {
+        console.error("Error adding product to cart:", error);
+      });
+  }
+
   viewProduct(productId) {
     this.props.history.push(`/single-product/${productId}`);
   }
@@ -104,6 +117,7 @@ class ShopComponent extends Component {
                       style={{ backgroundColor: "#51eaea", border: "none" }}
                       data-tooltip-id="my-tooltip-2"
                       data-tooltip-content="Add to cart!"
+                      onClick={() => this.addProductToCart(product.productId)}
                     >
                       <FontAwesomeIcon icon={faCartShopping} />
                     </button>

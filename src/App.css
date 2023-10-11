@@ -13,3 +13,24 @@
         "Segoe UI Symbol",
         "Noto Color Emoji";
 }
+
+.table-shopping-cart img {
+    max-width: 100px;
+    border: 0.5px solid #ccc;
+}
+
+.table-shopping-cart img:hover {
+    opacity: 0.8;
+}
+
+.itemside {
+    display: flex;
+}
+
+.itemside .aside {
+    flex: 1;
+}
+
+.itemside .info {
+    flex: 1;
+}
