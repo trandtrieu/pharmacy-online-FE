@@ -103,48 +103,6 @@ class BannerComponent extends Component {
                     <del>95.00</del> — $55.00
                   </p>
                 </div>
-
-                <div className="col-sm-6 col-lg-3 text-center item mb-4">
-                  <a href="shop-single.html">
-                    <img
-                      src="assets/images/product_02.png"
-                      alt=""
-                      style={{ width: "250px", height: "270px" }}
-                    />
-                  </a>
-                  <h3 className="text-dark">
-                    <Link to="/single-product">Chanca Piedra</Link>
-                  </h3>
-                  <p className="price">$70.00</p>
-                </div>
-                <div className="col-sm-6 col-lg-3 text-center item mb-4">
-                  <a href="shop-single.html">
-                    <img
-                      src="assets/images/product_03.png"
-                      alt=""
-                      style={{ width: "250px", height: "270px" }}
-                    />
-                  </a>
-                  <h3 className="text-dark">
-                    <a href="shop-single.html">Umcka Cold Care</a>
-                  </h3>
-                  <p className="price">$120.00</p>
-                </div>
-                <div className="col-sm-6 col-lg-3 text-center item mb-4">
-                  <a href="shop-single.html">
-                    <img
-                      src="assets/images/product_04.png"
-                      alt=""
-                      style={{ width: "250px", height: "270px" }}
-                    />
-                  </a>
-                  <h3 className="text-dark">
-                    <a href="shop-single.html">Cetyl Pure</a>
-                  </h3>
-                  <p className="price">
-                    <del>45.00</del> — $20.00
-                  </p>
-                </div>
               </div>
               <div className="row mt-5">
                 <div className="col-12 text-center">
@@ -167,33 +125,6 @@ class BannerComponent extends Component {
                   <div className="nonloop-block-3 owl-carousel">
                     <div className="text-center item mb-4">
                       <a href="shop-single.html">
-                        <img src="assets/images/product_03.png" alt="" />
-                      </a>
-                      <h3 className="text-dark">
-                        <a href="shop-single.html">Umcka Cold Care</a>
-                      </h3>
-                      <p className="price">$120.00</p>
-                    </div>
-                    <div className="text-center item mb-4">
-                      <a href="shop-single.html">
-                        <img src="assets/images/product_01.png" alt="" />
-                      </a>
-                      <h3 className="text-dark">
-                        <a href="shop-single.html">Umcka Cold Care</a>
-                      </h3>
-                      <p className="price">$120.00</p>
-                    </div>
-                    <div className="text-center item mb-4">
-                      <a href="shop-single.html">
-                        <img src="assets/images/product_02.png" alt="" />
-                      </a>
-                      <h3 className="text-dark">
-                        <a href="shop-single.html">Umcka Cold Care</a>
-                      </h3>
-                      <p className="price">$120.00</p>
-                    </div>
-                    <div className="text-center item mb-4">
-                      <a href="shop-single.html">
                         <img src="assets/images/product_04.png" alt="" />
                       </a>
                       <h3 className="text-dark">
@@ -211,80 +142,6 @@ class BannerComponent extends Component {
               <div className="row">
                 <div className="title-section text-center col-12">
                   <h2 className="text-uppercase">Testimonials</h2>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-md-12 block-3 products-wrap">
-                  <div className="nonloop-block-3 no-direction owl-carousel">
-                    <div className="testimony">
-                      <blockquote>
-                        <img
-                          src="assets/images/person_1.jpg"
-                          alt=""
-                          className="img-fluid w-25 mb-4 rounded-circle"
-                        />
-                        <p>
-                          “Lorem ipsum dolor, sit amet consectetur adipisicing
-                          elit. Nemo omnis voluptatem consectetur quam tempore
-                          obcaecati maiores voluptate aspernatur iusto eveniet,
-                          placeat ab quod tenetur ducimus. Minus ratione sit
-                          quaerat unde.”
-                        </p>
-                      </blockquote>
-                      <p>— Kelly Holmes</p>
-                    </div>
-                    <div className="testimony">
-                      <blockquote>
-                        <img
-                          src="assets/images/person_2.jpg"
-                          alt=""
-                          className="img-fluid w-25 mb-4 rounded-circle"
-                        />
-                        <p>
-                          “Lorem ipsum dolor, sit amet consectetur adipisicing
-                          elit. Nemo omnis voluptatem consectetur quam tempore
-                          obcaecati maiores voluptate aspernatur iusto eveniet,
-                          placeat ab quod tenetur ducimus. Minus ratione sit
-                          quaerat unde.”
-                        </p>
-                      </blockquote>
-                      <p>— Rebecca Morando</p>
-                    </div>
-                    <div className="testimony">
-                      <blockquote>
-                        <img
-                          src="assets/images/person_3.jpg"
-                          alt=""
-                          className="img-fluid w-25 mb-4 rounded-circle"
-                        />
-                        <p>
-                          “Lorem ipsum dolor, sit amet consectetur adipisicing
-                          elit. Nemo omnis voluptatem consectetur quam tempore
-                          obcaecati maiores voluptate aspernatur iusto eveniet,
-                          placeat ab quod tenetur ducimus. Minus ratione sit
-                          quaerat unde.”
-                        </p>
-                      </blockquote>
-                      <p>— Lucas Gallone</p>
-                    </div>
-                    <div className="testimony">
-                      <blockquote>
-                        <img
-                          src={`assets/images/person_4.jpg`}
-                          alt=""
-                          className="img-fluid w-25 mb-4 rounded-circle"
-                        />
-                        <p>
-                          “Lorem ipsum dolor, sit amet consectetur adipisicing
-                          elit. Nemo omnis voluptatem consectetur quam tempore
-                          obcaecati maiores voluptate aspernatur iusto eveniet,
-                          placeat ab quod tenetur ducimus. Minus ratione sit
-                          quaerat unde.”
-                        </p>
-                      </blockquote>
-                      <p>— Andrew Neel</p>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>

@@ -8,6 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import WishListServices from "../services/WishListServices";
+import CartServices from "../services/CartServices";
 
 const accountId = 4;
 class WishListComponent extends Component {
@@ -23,7 +24,17 @@ class WishListComponent extends Component {
       this.setState({ wishlists: res.data });
     });
   }
-
+  addProductToCart(product_id) {
+    const accountId = 4; // Replace with the actual account ID
+    CartServices.addToCart(accountId, product_id, 1)
+      .then((response) => {
+        console.log("Product added to cart:", response.data);
+        toast.success("Product added to cart successfully!");
+      })
+      .catch((error) => {
+        console.error("Error adding product to cart:", error);
+      });
+  }
   deleteWishListProduct(accountId, productId) {
     return function (event) {
       event.preventDefault();
@@ -130,6 +141,11 @@ class WishListComponent extends Component {
                                 <button
                                   className="btn btn-outline-primary btn-sm mt-2"
                                   type="button"
+                                  onClick={() =>
+                                    this.addProductToCart(
+                                      wishlistItem.productId
+                                    )
+                                  }
                                 >
                                   <FontAwesomeIcon icon={faCartShopping} />
                                 </button>

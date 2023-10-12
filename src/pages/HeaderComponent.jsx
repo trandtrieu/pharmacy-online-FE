@@ -1,7 +1,14 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCircleInfo,
+  faEnvelope,
+  faHeart,
+  faHouse,
+  faStore,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 
 // const accountId = 3;
 
@@ -45,16 +52,22 @@ class HeaderComponent extends Component {
                   >
                     <ul className="site-menu js-clone-nav d-none d-lg-block">
                       <li className="">
+                        <FontAwesomeIcon icon={faHouse} />
                         <Link to="/home">Home</Link>
-                      </li>
+                      </li>{" "}
+                      &nbsp;
                       <li>
+                        <FontAwesomeIcon icon={faStore} />
                         <Link to="/shop">Store</Link>
-                      </li>
-
+                      </li>{" "}
+                      &nbsp;
                       <li>
+                        <FontAwesomeIcon icon={faCircleInfo} />
                         <Link to="/about">About</Link>
-                      </li>
+                      </li>{" "}
+                      &nbsp;
                       <li>
+                        <FontAwesomeIcon icon={faEnvelope} />{" "}
                         <Link to="/contact">Contact</Link>
                       </li>
                     </ul>
@@ -76,6 +89,10 @@ class HeaderComponent extends Component {
                   <Link to="/cart" className="icons-btn d-inline-block bag">
                     <span className="icon-shopping-bag"></span>
                     <span className="number">2</span>
+                  </Link>
+                  &nbsp;
+                  <Link to="/cart" className="icons-btn d-inline-block bag">
+                    <FontAwesomeIcon icon={faUser} />
                   </Link>
                   &nbsp;
                   <a
