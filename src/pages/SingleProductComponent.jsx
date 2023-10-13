@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import ProductServices from "../services/ProductServices";
 import { Link } from "react-router-dom/cjs/react-router-dom";
+import CartServices from "../services/CartServices";
+import { toast } from "react-toastify";
 
 class SingleComponent extends Component {
   constructor(props) {
@@ -20,7 +22,17 @@ class SingleComponent extends Component {
       this.setState({ product: productData, imageUrls });
     });
   }
-
+  addProductToCart(product_id) {
+    const accountId = 4; // Replace with the actual account ID
+    CartServices.addToCart(accountId, product_id, 1)
+      .then((response) => {
+        console.log("Product added to cart:", response.data);
+        toast.success("Product added to cart successfully!");
+      })
+      .catch((error) => {
+        console.error("Error adding product to cart:", error);
+      });
+  }
   render() {
     return (
       <>
@@ -150,12 +162,15 @@ class SingleComponent extends Component {
                     </div>
                   </div>
                   <p>
-                    <a
+                    <button
                       href="cart.html"
                       className="buy-now btn btn-sm height-auto px-4 py-2 btn-primary"
+                      onClick={() =>
+                        this.addProductToCart(this.state.product.productId)
+                      }
                     >
                       Add To Cart
-                    </a>
+                    </button>
                   </p>
 
                   <div className="mt-5">

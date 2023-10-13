@@ -51,17 +51,6 @@ class FooterComponent extends Component {
                   </div>
                 </div>
               </div>
-              <div className="row pt-5 mt-5 text-center">
-                <div className="col-md-12">
-                  <p>
-                    Copyright © All rights reserved | This template is made with
-                    <i className="icon-heart" aria-hidden="true" /> by
-                    <a href="/" target="_blank" className="text-primary">
-                      Colorlib
-                    </a>
-                  </p>
-                </div>
-              </div>
             </div>
           </footer>
         </div>

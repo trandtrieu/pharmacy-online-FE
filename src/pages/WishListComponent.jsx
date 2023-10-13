@@ -20,9 +20,13 @@ class WishListComponent extends Component {
   }
 
   componentDidMount() {
-    WishListServices.wishlist(accountId).then((res) => {
-      this.setState({ wishlists: res.data });
-    });
+    WishListServices.wishlist(accountId)
+      .then((res) => {
+        this.setState({ wishlists: res.data });
+      })
+      .catch((error) => {
+        console.error("Lỗi khi tải wishlist:", error);
+      });
   }
   addProductToCart(product_id) {
     const accountId = 4; // Replace with the actual account ID

@@ -1,7 +1,28 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import ProductServices from "../services/ProductServices";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
 
 class BannerComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      products: [],
+    };
+  }
+  componentDidMount() {
+    ProductServices.getProducts()
+      .then((res) => {
+        this.setState({ products: res.data });
+      })
+      .catch((error) => {
+        console.error("Lỗi khi tải sản phẩm:", error);
+      });
+  }
+  viewProduct(productId) {
+    this.props.history.push(`/single-product/${productId}`);
+  }
   render() {
     return (
       <>
@@ -28,6 +49,7 @@ class BannerComponent extends Component {
               </div>
             </div>
           </div>
+
           <div className="site-section">
             <div className="container">
               <div className="row align-items-stretch section-overlap">
@@ -87,65 +109,62 @@ class BannerComponent extends Component {
                 </div>
               </div>
               <div className="row">
-                <div className="col-sm-6 col-lg-3 text-center item mb-4">
-                  <span className="tag">Sale</span>
-                  <a href="shop-single.html">
-                    <img
-                      src="assets/images/product_01.png"
-                      alt=""
-                      style={{ width: "250px", height: "270px" }}
-                    />
-                  </a>
-                  <h3 className="text-dark">
-                    <a href="shop-single.html">Bioderma</a>
-                  </h3>
-                  <p className="price">
-                    <del>95.00</del> — $55.00
-                  </p>
-                </div>
+                {this.state.products.map((product) => (
+                  <div
+                    className="col-sm-6 col-lg-3 text-center item mb-4"
+                    key={product.productId}
+                  >
+                    <div onClick={() => this.viewProduct(product.productId)}>
+                      {product.isSale === 1 ? (
+                        <span className="tag">Sale</span>
+                      ) : null}{" "}
+                      {product.imageUrls.length > 0 && (
+                        <img
+                          src={`assets/images/${product.imageUrls[0]}`}
+                          alt={`Imagee 0`}
+                        />
+                      )}
+                      <h3 className="text-dark">
+                        <a href="shop-single.html">{product.name}</a>
+                      </h3>
+                      <p className="price">
+                        <del>${product.price}</del> — ${product.price}
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      className="btn btn-secondary btn-md px-4 "
+                      style={{ backgroundColor: "#51eaea", border: "none" }}
+                      data-tooltip-id="my-tooltip"
+                      data-tooltip-content="Add to wishlist!"
+                      onClick={() => this.addWishListProduct(product.productId)}
+                    >
+                      <FontAwesomeIcon icon={faHeart} />
+                    </button>
+                    &nbsp;
+                    <button
+                      type="button"
+                      className="btn btn-secondary btn-md px-4 btn-custom"
+                      style={{ backgroundColor: "#51eaea", border: "none" }}
+                      data-tooltip-id="my-tooltip-2"
+                      data-tooltip-content="Add to cart!"
+                      onClick={() => this.addProductToCart(product.productId)}
+                    >
+                      <FontAwesomeIcon icon={faCartShopping} />
+                    </button>
+                  </div>
+                ))}
               </div>
               <div className="row mt-5">
                 <div className="col-12 text-center">
-                  <a href="shop.html" className="btn btn-primary px-4 py-3">
+                  <Link to="/shop" className="btn btn-primary px-4 py-3">
                     View All Products
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
-          <div className="site-section bg-light">
-            <div className="container">
-              <div className="row">
-                <div className="title-section text-center col-12">
-                  <h2 className="text-uppercase">New Products</h2>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-md-12 block-3 products-wrap">
-                  <div className="nonloop-block-3 owl-carousel">
-                    <div className="text-center item mb-4">
-                      <a href="shop-single.html">
-                        <img src="assets/images/product_04.png" alt="" />
-                      </a>
-                      <h3 className="text-dark">
-                        <a href="shop-single.html">Umcka Cold Care</a>
-                      </h3>
-                      <p className="price">$120.00</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="site-section">
-            <div className="container">
-              <div className="row">
-                <div className="title-section text-center col-12">
-                  <h2 className="text-uppercase">Testimonials</h2>
-                </div>
-              </div>
-            </div>
-          </div>
+
           <div
             className="site-section bg-secondary bg-image"
             style={{ backgroundImage: 'url("assets/images/bg_2.jpg")' }}

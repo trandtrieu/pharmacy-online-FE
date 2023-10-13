@@ -6,20 +6,42 @@ import {
   faEnvelope,
   faHeart,
   faHouse,
+  faList,
   faStore,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
+import CategoryServices from "../services/CategoryServices";
 
 // const accountId = 3;
 
 class HeaderComponent extends Component {
-  viewWishList() {
-    // this.props.history.push(`/wishlist/${accountId}`);
+  constructor(props) {
+    super(props);
+    this.state = {
+      categories: [],
+    };
+  }
+
+  componentDidMount() {
+    CategoryServices.getCategoryType()
+      .then((res) => {
+        this.setState({
+          categories: res.data,
+        });
+        console.log(this.state.categories);
+      })
+      .catch((error) => {
+        console.error("Lỗi khi tải sản phẩm:", error);
+      });
+  }
+
+  viewProduct(category_id) {
+    this.props.history.push(`/category/${category_id}`);
   }
   render() {
     return (
       <>
-        <div className="site-wrap style-css">
+        <div className="site-wrap">
           <div className="site-navbar py-2">
             <div className="search-wrap">
               <div className="container">
@@ -54,20 +76,36 @@ class HeaderComponent extends Component {
                       <li className="">
                         <FontAwesomeIcon icon={faHouse} />
                         <Link to="/home">Home</Link>
-                      </li>{" "}
-                      &nbsp;
+                      </li>
                       <li>
                         <FontAwesomeIcon icon={faStore} />
                         <Link to="/shop">Store</Link>
-                      </li>{" "}
-                      &nbsp;
+                      </li>
+
+                      <li class="has-children">
+                        <FontAwesomeIcon icon={faList} />
+
+                        <a href="/">Dropdown</a>
+                        <ul class="dropdown">
+                          {this.state.categories.map((category) => (
+                            <li key={category.category_id}>
+                              <button
+                                onClick={() =>
+                                  this.viewProduct(category.category_id)
+                                }
+                              >
+                                {category.category_name}
+                              </button>
+                            </li>
+                          ))}
+                        </ul>
+                      </li>
                       <li>
                         <FontAwesomeIcon icon={faCircleInfo} />
                         <Link to="/about">About</Link>
-                      </li>{" "}
-                      &nbsp;
+                      </li>
                       <li>
-                        <FontAwesomeIcon icon={faEnvelope} />{" "}
+                        <FontAwesomeIcon icon={faEnvelope} />
                         <Link to="/contact">Contact</Link>
                       </li>
                     </ul>
@@ -81,7 +119,7 @@ class HeaderComponent extends Component {
                     <span className="icon-search"></span>
                   </Link>
                   <Link to="/wishlist" className="icons-btn d-inline-block bag">
-                    <span onClick={this.viewWishList()}>
+                    <span>
                       <FontAwesomeIcon icon={faHeart} />
                     </span>
                     <span className="number">3</span>

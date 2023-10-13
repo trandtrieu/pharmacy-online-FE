@@ -13,6 +13,7 @@ import WishListComponent from "./pages/WishListComponent";
 import "react-tooltip/dist/react-tooltip.css";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import CategoryProductComponent from "./pages/CategoryProductComponent";
 
 function App() {
   return (
@@ -29,6 +30,10 @@ function App() {
         <Route
           path="/single-product/:productId"
           component={SingleProductComponent}
+        />
+        <Route
+          path="/category/:category_id"
+          component={CategoryProductComponent}
         />
         <Route path="/contact" component={ContactComponent} />
         <Route path="/shop" component={ShopComponent} />

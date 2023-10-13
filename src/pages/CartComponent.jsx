@@ -90,13 +90,18 @@ class CartComponent extends Component {
     return (
       <>
         <div class="site-wrap">
-          <section class="section-pagetop bg">
-            <div class="container">
-              <h2 class="title-page text-center m-5">Shopping cart</h2>
+          <div className="bg-light py-3">
+            <div className="container">
+              <div className="row">
+                <div className="col-md-12 mb-0">
+                  <Link to="/home">Home</Link>
+                  <span className="mx-2 mb-0">/</span>
+                  <Link to="/shop">Cart</Link>
+                </div>
+              </div>
             </div>
-          </section>
-
-          <section class="section-content padding-y">
+          </div>
+          <section class="section-content padding-y mt-2">
             <div class="container">
               <div class="row">
                 <main class="col-md-9">
@@ -213,6 +218,7 @@ class CartComponent extends Component {
                       <button
                         onClick={this.handleUpdateCart} // Call the update function when the button is clicked
                         className="btn btn-primary float-md-right"
+                        style={{ backgroundColor: "#0072bc" }}
                       >
                         Update Cart
                       </button>
@@ -222,8 +228,11 @@ class CartComponent extends Component {
                     </div>
                   </div>
 
-                  <div class="alert alert-success mt-3">
-                    <p class="icontext">
+                  <div
+                    class="alert mt-3"
+                    style={{ backgroundColor: "#0072bc" }}
+                  >
+                    <p class="icontext text-white">
                       <i class="icon text-success fa fa-truck"></i> Free
                       Delivery within 1-2 weeks
                     </p>
@@ -243,7 +252,12 @@ class CartComponent extends Component {
                               placeholder="Coupon code"
                             />
                             <span class="input-group-append">
-                              <button class="btn btn-primary">Apply</button>
+                              <button
+                                class="btn btn-primary"
+                                style={{ backgroundColor: "#0072bc" }}
+                              >
+                                Apply
+                              </button>
                             </span>
                           </div>
                         </div>
@@ -255,12 +269,12 @@ class CartComponent extends Component {
                       <dl class="dlist-align">
                         <dt>Total price:</dt>
                         <dd class="text-right">
-                          <p>Total Price: $ {this.calculateTotalPrice()}</p>
+                          <p>$ {this.calculateTotalPrice()}</p>
                         </dd>
                       </dl>
                       <dl class="dlist-align">
                         <dt>Discount:</dt>
-                        <dd class="text-right">USD 658</dd>
+                        <dd class="text-right">$ 658</dd>
                       </dl>
                       <dl class="dlist-align">
                         <dt>Total:</dt>
@@ -270,17 +284,9 @@ class CartComponent extends Component {
                       </dl>
                       <hr />
                       <p class="text-center mb-3">
-                        <img
-                          src="..assets/images/momo.png"
-                          height="36"
-                          alt=""
-                        />
+                        <img src="assets/images/momo.png" height="25" alt="" />
                         &nbsp;
-                        <img
-                          src="..assets/images/vnpay.jpg"
-                          height="36"
-                          alt=""
-                        />
+                        <img src="assets/images/vnpay.png" height="25" alt="" />
                       </p>
                     </div>
                   </div>
@@ -289,6 +295,7 @@ class CartComponent extends Component {
             </div>
           </section>
         </div>
+        <hr />
       </>
     );
   }

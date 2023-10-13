@@ -1,56 +1,31 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import ProductServices from "../services/ProductServices";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faCartShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
+// import { toast } from "react-toastify";
+// import WishListServices from "../services/WishListServices";
 import { Tooltip as ReactTooltip } from "react-tooltip";
-import { toast } from "react-toastify";
-import WishListServices from "../services/WishListServices";
 
-class ShopComponent extends Component {
+class CategoryProductComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      category_id: this.props.match.params.category_id,
       products: [],
     };
   }
 
   componentDidMount() {
-    ProductServices.getProducts()
+    ProductServices.getProductsByCategory(this.setState.category_id)
       .then((res) => {
-        this.setState({ products: res.data });
+        console.log("categoryId: ", this.setState.category_id);
+        // this.setState({ products: res.data });
       })
       .catch((error) => {
         console.error("Lỗi khi tải sản phẩm:", error);
       });
   }
-  addWishListProduct(product_id) {
-    const accountId = 4; // Replace with the actual account ID
-    WishListServices.addToWishlist(accountId, product_id)
-      .then((response) => {
-        console.log("Product added to wishlist:", response.data);
-        toast.success("Product added to wishlist successfully!");
-      })
-      .catch((error) => {
-        console.error("Error adding product to wishlist:", error);
-      });
-  }
-  addProductToCart(product_id) {
-    const accountId = 4; // Replace with the actual account ID
-    ProductServices.addToCart(accountId, product_id, 1)
-      .then((response) => {
-        console.log("Product added to cart:", response.data);
-        toast.error("Product added to cart successfully!");
-      })
-      .catch((error) => {
-        console.error("Error adding product to cart:", error);
-      });
-  }
-
-  viewProduct(productId) {
-    this.props.history.push(`/single-product/${productId}`);
-  }
-
   render() {
     return (
       <>
@@ -72,7 +47,7 @@ class ShopComponent extends Component {
               <ReactTooltip id="my-tooltip" type="error" place="left" />
               <ReactTooltip id="my-tooltip-2" type="error" place="right" />
 
-              <div className="row">
+              {/* <div className="row">
                 {this.state.products.map((product) => (
                   <div
                     className="col-sm-3 col-lg-3 col-md-3 text-center mb-3 item product-shop"
@@ -120,7 +95,7 @@ class ShopComponent extends Component {
                     </button>
                   </div>
                 ))}
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -129,4 +104,4 @@ class ShopComponent extends Component {
   }
 }
 
-export default ShopComponent;
+export default CategoryProductComponent;
